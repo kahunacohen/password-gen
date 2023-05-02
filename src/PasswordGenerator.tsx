@@ -54,7 +54,24 @@ export function PasswordGenerator() {
             Length
           </label>
           <input id="length-input" type="number" max="16"></input>
-          <div className="checkbox-wrapper"></div>
+          <div className="checkboxes-ct">
+            <div className="checkbox-ct">
+              <label>Uppercase</label>
+              <input type="checkbox"></input>
+            </div>
+            <div className="checkbox-ct">
+              <label>Lowercase</label>
+              <input type="checkbox"></input>
+            </div>
+            <div className="checkbox-ct">
+              <label>Numbers</label>
+              <input type="checkbox"></input>
+            </div>
+            <div className="checkbox-ct">
+              <label>Special Characters</label>
+              <input type="checkbox"></input>
+            </div>
+          </div>
         </div>
       </div>
     </div>
