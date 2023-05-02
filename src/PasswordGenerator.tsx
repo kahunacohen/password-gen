@@ -6,7 +6,6 @@ export function PasswordGenerator() {
   return (
     <div className="password-generator-wrapper">
       <div className="content">
-        {/* Header component */}
         <div className="Header">
           <img className="logo" alt="lock" src="./lock-image.gif" />
           <p className="title">Password Generator</p>
@@ -16,7 +15,7 @@ export function PasswordGenerator() {
         </div>
 
         {/* Indicator component */}
-        <div className="Indicator">
+        <div className="Output">
           <div className="input-row">
             <div className="input-wrapper">
               <input type="text"></input>
@@ -49,7 +48,7 @@ export function PasswordGenerator() {
         </div>
 
         {/* Inputs component */}
-        <div className="Inputs">
+        <div className="Input">
           <label className="length-label" htmlFor="length-input">
             Length
           </label>
