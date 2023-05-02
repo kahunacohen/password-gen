@@ -1,7 +1,112 @@
 import React, { useEffect, useState } from "react";
 
-function generatePassword(input: GeneratorInput) {
-  return "xFz1+=$";
+function getRandomNum(max: number): number {
+  return Math.floor(Math.random() * max);
+}
+function generatePassword(input: GeneratorInput): string {
+  /**
+   * Determine number of each type of character by dividing
+   * the length by number of types. So if we choose a password of
+   * 8 chars, chosing uppercase and numbers. We would have a length
+   * 8 password with 4 random uppercase numbers and 4 random lower case numbers.
+   */
+  let ret = "";
+  let numTypes = 0;
+  if (input.lowercase) {
+    numTypes += 1;
+  }
+  if (input.numbers) {
+    numTypes += 1;
+  }
+  if (input.specialCharacters) {
+    numTypes += 1;
+  }
+  if (input.uppercase) {
+    numTypes += 1;
+  }
+  const numEachType = input.length / numTypes;
+  // For each type, randomly choose appropriate number
+  if (input.lowercase) {
+    const lowerCaseLetters = [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+      "d",
+      "e",
+      "f",
+      "g",
+      "h",
+      "i",
+      "j",
+      "k",
+      "l",
+      "m",
+      "n",
+      "o",
+      "p",
+      "q",
+      "r",
+      "s",
+      "t",
+      "u",
+      "v",
+      "w",
+      "x",
+      "y",
+      "z",
+    ];
+    for (let i = 0; i < numEachType; i++) {
+      ret += lowerCaseLetters[getRandomNum(lowerCaseLetters.length)];
+    }
+  }
+  if (input.uppercase) {
+    const upperCaseLetters = [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G",
+      "H",
+      "I",
+      "J",
+      "K",
+      "L",
+      "M",
+      "N",
+      "O",
+      "P",
+      "Q",
+      "R",
+      "S",
+      "T",
+      "U",
+      "V",
+      "W",
+      "X",
+      "Y",
+      "Z",
+    ];
+    for (let i = 0; i < numEachType; i++) {
+      ret += upperCaseLetters[getRandomNum(upperCaseLetters.length)];
+    }
+  }
+  if (input.numbers) {
+    const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    for (let i = 0; i < numEachType; i++) {
+      ret += numbers[getRandomNum(numbers.length)];
+    }
+  }
+  if (input.specialCharacters) {
+    const specialCharacters = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")"];
+    for (let i = 0; i < numEachType; i++) {
+        ret += specialCharacters[getRandomNum(specialCharacters.length)];
+      }
+  }
+  return ret;
 }
 function getPasswordStrength(password: string): string {
   return "Strong";
