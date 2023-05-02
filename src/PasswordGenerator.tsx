@@ -50,8 +50,11 @@ export function PasswordGenerator() {
 
         {/* Inputs component */}
         <div className="Inputs">
-          <label className="length-label" htmlFor="length-input">Length</label>
+          <label className="length-label" htmlFor="length-input">
+            Length
+          </label>
           <input id="length-input" type="number" max="16"></input>
+          <div className="checkbox-wrapper"></div>
         </div>
       </div>
     </div>
