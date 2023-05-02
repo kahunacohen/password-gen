@@ -10,6 +10,7 @@ function generatePassword(input: GeneratorInput): string {
    * 8 chars, chosing uppercase and numbers. We would have a length
    * 8 password with 4 random uppercase numbers and 4 random lower case numbers.
    */
+  let retArr = Array(input.length).fill(-1);
   let ret = "";
   let numTypes = 0;
   if (input.lowercase) {
@@ -58,6 +59,11 @@ function generatePassword(input: GeneratorInput): string {
       "z",
     ];
     for (let i = 0; i < numEachType; i++) {
+      let randIndx = getRandomNum(input.length - 1);
+      while (retArr[randIndx] === -1) {
+        retArr[randIndx] =
+          lowerCaseLetters[getRandomNum(lowerCaseLetters.length)];
+      }
       ret += lowerCaseLetters[getRandomNum(lowerCaseLetters.length)];
     }
   }
@@ -91,6 +97,12 @@ function generatePassword(input: GeneratorInput): string {
       "Z",
     ];
     for (let i = 0; i < numEachType; i++) {
+      const randIndx = getRandomNum(input.length - 1);
+
+    //   while (retArr[randIndx] === -1) {
+    //     retArr[randIndx] =
+    //       upperCaseLetters[getRandomNum(upperCaseLetters.length)];
+    //   }
       ret += upperCaseLetters[getRandomNum(upperCaseLetters.length)];
     }
   }
@@ -101,11 +113,29 @@ function generatePassword(input: GeneratorInput): string {
     }
   }
   if (input.specialCharacters) {
-    const specialCharacters = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")"];
+    const specialCharacters = [
+      "!",
+      "@",
+      "#",
+      "$",
+      "%",
+      "^",
+      "&",
+      "*",
+      "(",
+      ")",
+    ];
     for (let i = 0; i < numEachType; i++) {
-        ret += specialCharacters[getRandomNum(specialCharacters.length)];
-      }
+        const randIndx = getRandomNum(input.length - 1);
+
+        // while (retArr[randIndx] === -1) {
+        //     retArr[randIndx] =
+        //       specialCharacters[getRandomNum(specialCharacters.length)];
+        //   }
+      ret += specialCharacters[getRandomNum(specialCharacters.length)];
+    }
   }
+  console.log(retArr);
   return ret;
 }
 function getPasswordStrength(password: string): string {
