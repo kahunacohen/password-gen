@@ -103,6 +103,10 @@ export function generatePassword(input: GeneratorInput): string {
     numTypes += 1;
   }
   const numEachType = input.length / numTypes;
+  console.log(`len: ${input.length}, numTypes: ${numTypes}, numEachType: ${numEachType}, floor: ${Math.floor(numEachType)}`);
+  // Floor numEachTypes. Then mult numEachTypes * length and subtract that from length and that gives you what's left. Add any of
+  // the types for what's remaining.
+  return "foo";
   // For each type, randomly choose appropriate number
   if (input.lowercase) {
     for (let i = 0; i < numEachType; i++) {
