@@ -15,7 +15,7 @@ export function PasswordGenerator() {
           </p>
         </div>
         <Output
-          length={8}
+          length={16}
           uppercase={true}
           lowercase={true}
           numbers={true}

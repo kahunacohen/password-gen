@@ -59,11 +59,12 @@ function generatePassword(input: GeneratorInput): string {
       "z",
     ];
     for (let i = 0; i < numEachType; i++) {
-      let randIndx = getRandomNum(input.length - 1);
-      while (retArr[randIndx] === -1) {
-        retArr[randIndx] =
-          lowerCaseLetters[getRandomNum(lowerCaseLetters.length)];
+      let randIndx = getRandomNum(input.length);
+      // As long as there is a value at this index, try a new index.
+      while (retArr[randIndx] !== -1) {
+        randIndx = getRandomNum(input.length);
       }
+      retArr[randIndx] = lowerCaseLetters[randIndx];
       ret += lowerCaseLetters[getRandomNum(lowerCaseLetters.length)];
     }
   }
@@ -97,18 +98,25 @@ function generatePassword(input: GeneratorInput): string {
       "Z",
     ];
     for (let i = 0; i < numEachType; i++) {
-      const randIndx = getRandomNum(input.length - 1);
+      let randIndx = getRandomNum(input.length);
 
-    //   while (retArr[randIndx] === -1) {
-    //     retArr[randIndx] =
-    //       upperCaseLetters[getRandomNum(upperCaseLetters.length)];
-    //   }
+      while (retArr[randIndx] !== -1) {
+        randIndx = getRandomNum(input.length);
+      }
+      retArr[randIndx] =
+        upperCaseLetters[getRandomNum(upperCaseLetters.length)];
       ret += upperCaseLetters[getRandomNum(upperCaseLetters.length)];
     }
   }
   if (input.numbers) {
     const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
     for (let i = 0; i < numEachType; i++) {
+      let randIndx = getRandomNum(input.length - 1);
+
+      while (retArr[randIndx] !== -1) {
+        randIndx = getRandomNum(input.length - 1);
+      }
+      retArr[randIndx] = numbers[getRandomNum(numbers.length)];
       ret += numbers[getRandomNum(numbers.length)];
     }
   }
@@ -126,17 +134,17 @@ function generatePassword(input: GeneratorInput): string {
       ")",
     ];
     for (let i = 0; i < numEachType; i++) {
-        const randIndx = getRandomNum(input.length - 1);
+      let randIndx = getRandomNum(input.length);
 
-        // while (retArr[randIndx] === -1) {
-        //     retArr[randIndx] =
-        //       specialCharacters[getRandomNum(specialCharacters.length)];
-        //   }
+      while (retArr[randIndx] !== -1) {
+        randIndx = getRandomNum(input.length);
+      }
+      retArr[randIndx] =
+        specialCharacters[getRandomNum(specialCharacters.length)];
       ret += specialCharacters[getRandomNum(specialCharacters.length)];
     }
   }
-  console.log(retArr);
-  return ret;
+  return retArr.join("");
 }
 function getPasswordStrength(password: string): string {
   return "Strong";
