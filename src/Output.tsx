@@ -132,6 +132,12 @@ function generatePassword(input: GeneratorInput): string {
       "*",
       "(",
       ")",
+      "_",
+      "+",
+      "=",
+      ">",
+      "<",
+      "?",
     ];
     for (let i = 0; i < numEachType; i++) {
       let randIndx = getRandomNum(input.length);
@@ -146,8 +152,8 @@ function generatePassword(input: GeneratorInput): string {
   }
   return retArr.join("");
 }
-function getPasswordStrength(password: string): string {
-  return "Strong";
+function getPasswordStrength(password: string): boolean {
+  return password.length > 8;
 }
 
 interface GeneratorInput {
@@ -163,7 +169,7 @@ export function Output(props: GeneratorInput) {
   useEffect(() => {
     setPassword(generatePassword(props));
   }, []);
-  const passwordStrength = getPasswordStrength(password);
+  const passwordStrength = getPasswordStrength(password) ? "Strong" : "Weak";
   return (
     <div className="Output">
       <div className="input-row">
@@ -193,7 +199,7 @@ export function Output(props: GeneratorInput) {
         </div>
         <button className="copy-btn">Copy</button>
       </div>
-      <div className={"strength " + passwordStrength}>{passwordStrength}</div>
+      <div className={"strength " + passwordStrength.toLowerCase()}>{passwordStrength}</div>
       <div className="length">Password length: 0</div>
     </div>
   );
