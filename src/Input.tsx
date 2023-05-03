@@ -1,10 +1,16 @@
-export function Input(props: any) {
+export function Input(props: { length: number; setPasswordLength: Function }) {
   return (
     <div className="Input">
       <label className="length-label" htmlFor="length-input">
         Length
       </label>
-      <input id="length-input" type="number" max="16" defaultValue={6}></input>
+      <input
+        onChange={() => alert("hi")}
+        id="length-input"
+        type="number"
+        max="16"
+        defaultValue={props.length}
+      ></input>
       <div className="checkboxes-ct">
         <div className="checkbox-ct">
           <label>Uppercase</label>

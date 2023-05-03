@@ -7,7 +7,6 @@ import {
   SPECIAL_CHARACTERS,
 } from "./password";
 
-
 test("generates a password with a length that evenly divides by the type of characters", () => {
   const password = generatePassword({
     uppercase: true,

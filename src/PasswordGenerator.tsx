@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Output } from "./Output";
 import "./PasswordGenerator.css";
 import { Input } from "./Input";
 
 export function PasswordGenerator() {
+  const [passwordLength, setPasswordLength] = useState(6);
   return (
     <div className="password-generator-wrapper">
       <div className="content">
@@ -15,13 +16,13 @@ export function PasswordGenerator() {
           </p>
         </div>
         <Output
-          length={8}
+          length={passwordLength}
           uppercase={true}
           lowercase={true}
           numbers={true}
           specialCharacters={true}
         />
-        <Input />
+        <Input setPasswordLength={setPasswordLength} length={passwordLength} />
       </div>
     </div>
   );
