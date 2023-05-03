@@ -1,6 +1,6 @@
 import { GeneratorInput } from "./types";
 
-const lowerCaseLetters = [
+export const LOWERCASE_LETTERS = [
   "a",
   "b",
   "c",
@@ -30,7 +30,7 @@ const lowerCaseLetters = [
   "y",
   "z",
 ];
-const upperCaseLetters = [
+export const UPPERCASE_LETTERS = [
   "A",
   "B",
   "C",
@@ -58,8 +58,8 @@ const upperCaseLetters = [
   "Y",
   "Z",
 ];
-const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-const specialCharacters = [
+export const NUMBERS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+export const SPECIAL_CHARACTERS = [
   "!",
   "@",
   "#",
@@ -89,7 +89,6 @@ export function generatePassword(input: GeneratorInput): string {
    * 8 password with 4 random uppercase numbers and 4 random lower case numbers.
    */
   let retArr = Array(input.length).fill(-1);
-  let ret = "";
   let numTypes = 0;
   if (input.lowercase) {
     numTypes += 1;
@@ -112,8 +111,7 @@ export function generatePassword(input: GeneratorInput): string {
       while (retArr[randIndx] !== -1) {
         randIndx = getRandomNum(input.length);
       }
-      retArr[randIndx] = lowerCaseLetters[randIndx];
-      ret += lowerCaseLetters[getRandomNum(lowerCaseLetters.length)];
+      retArr[randIndx] = LOWERCASE_LETTERS[randIndx];
     }
   }
   if (input.uppercase) {
@@ -124,8 +122,7 @@ export function generatePassword(input: GeneratorInput): string {
         randIndx = getRandomNum(input.length);
       }
       retArr[randIndx] =
-        upperCaseLetters[getRandomNum(upperCaseLetters.length)];
-      ret += upperCaseLetters[getRandomNum(upperCaseLetters.length)];
+        UPPERCASE_LETTERS[getRandomNum(UPPERCASE_LETTERS.length)];
     }
   }
   if (input.numbers) {
@@ -135,8 +132,7 @@ export function generatePassword(input: GeneratorInput): string {
       while (retArr[randIndx] !== -1) {
         randIndx = getRandomNum(input.length - 1);
       }
-      retArr[randIndx] = numbers[getRandomNum(numbers.length)];
-      ret += numbers[getRandomNum(numbers.length)];
+      retArr[randIndx] = NUMBERS[getRandomNum(NUMBERS.length)];
     }
   }
   if (input.specialCharacters) {
@@ -147,8 +143,7 @@ export function generatePassword(input: GeneratorInput): string {
         randIndx = getRandomNum(input.length);
       }
       retArr[randIndx] =
-        specialCharacters[getRandomNum(specialCharacters.length)];
-      ret += specialCharacters[getRandomNum(specialCharacters.length)];
+        SPECIAL_CHARACTERS[getRandomNum(SPECIAL_CHARACTERS.length)];
     }
   }
   return retArr.join("");

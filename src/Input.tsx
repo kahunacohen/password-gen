@@ -4,7 +4,7 @@ export function Input(props: any) {
       <label className="length-label" htmlFor="length-input">
         Length
       </label>
-      <input id="length-input" type="number" max="16"></input>
+      <input id="length-input" type="number" max="16" defaultValue={6}></input>
       <div className="checkboxes-ct">
         <div className="checkbox-ct">
           <label>Uppercase</label>
