@@ -108,7 +108,6 @@ export function generatePassword(input: GeneratorInput): string {
   // characters to the string.
   const numCharsPerType = Math.floor(input.length / numTypes);
   const remainder = input.length % numTypes;
-
   // For each type, randomly choose appropriate number
   if (input.lowercase) {
     for (let i = 0; i < numCharsPerType; i++) {

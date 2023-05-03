@@ -5,7 +5,7 @@ export function Input(props: { length: number; setPasswordLength: Function }) {
         Length
       </label>
       <input
-        onChange={() => alert("hi")}
+        onChange={(evt) => props.setPasswordLength(parseInt(evt.target.value))}
         id="length-input"
         type="number"
         max="16"
