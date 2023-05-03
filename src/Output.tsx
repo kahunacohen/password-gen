@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { generatePassword, getPasswordStrength } from "./password";
 import { GeneratorInput } from "./types";
 
-
 export function Output(props: GeneratorInput) {
   const [password, setPassword] = useState("");
 
@@ -16,6 +15,7 @@ export function Output(props: GeneratorInput) {
         <div className="input-wrapper">
           <input value={password} type="text"></input>
           <svg
+            onClick={() => setPassword(generatePassword(props))}
             className="refresh"
             width="30"
             height="30"
@@ -37,9 +37,23 @@ export function Output(props: GeneratorInput) {
             ></path>
           </svg>
         </div>
-        <button className="copy-btn">Copy</button>
+        <button
+          onClick={async () => {
+            try {
+              await navigator.clipboard.writeText(password);
+              alert("Copied password to clipboard");
+            } catch (e) {
+              alert("Error copying password to clipboard");
+            }
+          }}
+          className="copy-btn"
+        >
+          Copy
+        </button>
       </div>
-      <div className={"strength " + passwordStrength.toLowerCase()}>{passwordStrength}</div>
+      <div className={"strength " + passwordStrength.toLowerCase()}>
+        {passwordStrength}
+      </div>
       <div className="length">Password length: {props.length}</div>
     </div>
   );

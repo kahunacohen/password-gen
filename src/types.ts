@@ -1,7 +1,7 @@
 export interface GeneratorInput {
-    length: number;
-    uppercase: boolean;
-    lowercase: boolean;
-    numbers: boolean;
-    specialCharacters: boolean;
-  }
+  length: number;
+  uppercase: boolean;
+  lowercase: boolean;
+  numbers: boolean;
+  specialCharacters: boolean;
+}
