@@ -1,3 +1,4 @@
+import { specialChars } from "@testing-library/user-event";
 import { GeneratorInput } from "./types";
 
 export const LOWERCASE_LETTERS = [
@@ -102,14 +103,15 @@ export function generatePassword(input: GeneratorInput): string {
   if (input.uppercase) {
     numTypes += 1;
   }
-  const numEachType = input.length / numTypes;
-  console.log(`len: ${input.length}, numTypes: ${numTypes}, numEachType: ${numEachType}, floor: ${Math.floor(numEachType)}`);
-  // Floor numEachTypes. Then mult numEachTypes * length and subtract that from length and that gives you what's left. Add any of
-  // the types for what's remaining.
-  return "foo";
+  // This is the number of chars for each type (e.g. lower case, upper case etc.).
+  // This must be a whole number. If there's a remainder, it will be added from special
+  // characters to the string.
+  const numCharsPerType = Math.floor(input.length / numTypes);
+  const remainder = input.length % numTypes;
+
   // For each type, randomly choose appropriate number
   if (input.lowercase) {
-    for (let i = 0; i < numEachType; i++) {
+    for (let i = 0; i < numCharsPerType; i++) {
       let randIndx = getRandomNum(input.length);
       // As long as there is a value at this index, try a new index.
       while (retArr[randIndx] !== -1) {
@@ -119,7 +121,7 @@ export function generatePassword(input: GeneratorInput): string {
     }
   }
   if (input.uppercase) {
-    for (let i = 0; i < numEachType; i++) {
+    for (let i = 0; i < numCharsPerType; i++) {
       let randIndx = getRandomNum(input.length);
 
       while (retArr[randIndx] !== -1) {
@@ -130,7 +132,7 @@ export function generatePassword(input: GeneratorInput): string {
     }
   }
   if (input.numbers) {
-    for (let i = 0; i < numEachType; i++) {
+    for (let i = 0; i < numCharsPerType; i++) {
       let randIndx = getRandomNum(input.length - 1);
 
       while (retArr[randIndx] !== -1) {
@@ -140,7 +142,7 @@ export function generatePassword(input: GeneratorInput): string {
     }
   }
   if (input.specialCharacters) {
-    for (let i = 0; i < numEachType; i++) {
+    for (let i = 0; i < numCharsPerType; i++) {
       let randIndx = getRandomNum(input.length);
 
       while (retArr[randIndx] !== -1) {
@@ -149,6 +151,13 @@ export function generatePassword(input: GeneratorInput): string {
       retArr[randIndx] =
         SPECIAL_CHARACTERS[getRandomNum(SPECIAL_CHARACTERS.length)];
     }
+  }
+  // If there's a remainder (the length doesn't divide evenly by type of chars, then replace
+  // any remaining -1 elements with special characters.
+  if (remainder > 0) {
+    retArr = retArr.map((x) =>
+      x === -1 ? SPECIAL_CHARACTERS[getRandomNum(SPECIAL_CHARACTERS.length)] : x
+    );
   }
   return retArr.join("");
 }
