@@ -5,6 +5,11 @@ import { Input } from "./Input";
 
 export function PasswordGenerator() {
   const [passwordLength, setPasswordLength] = useState(6);
+  const [useUppercase, setUseUppercase] = useState(true);
+  const [useLowercase, setUseLowercase] = useState(true);
+  const [useNumbers, setUseNumbers] = useState(true);
+  const [useSpecialCharacters, setUseSpecialCharacters] = useState(true);
+
   return (
     <div className="password-generator-wrapper">
       <div className="content">
@@ -17,10 +22,10 @@ export function PasswordGenerator() {
         </div>
         <Output
           length={passwordLength}
-          useUppercase={true}
-          useLowercase={true}
-          useNumbers={true}
-          useSpecialCharacters={true}
+          useUppercase={useUppercase}
+          useLowercase={useLowercase}
+          useNumbers={useNumbers}
+          useSpecialCharacters={useSpecialCharacters}
         />
         <Input setPasswordLength={setPasswordLength} length={passwordLength} />
       </div>
