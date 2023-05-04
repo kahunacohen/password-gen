@@ -9,10 +9,10 @@ import {
 
 test("generates a password with a length that evenly divides by the type of characters", () => {
   const password = generatePassword({
-    uppercase: true,
-    lowercase: true,
-    numbers: true,
-    specialCharacters: true,
+    useUppercase: true,
+    useLowercase: true,
+    useNumbers: true,
+    useSpecialCharacters: true,
     length: 8,
   });
   expect(password.length).toEqual(8);
@@ -41,10 +41,10 @@ test("generates a password with a length that evenly divides by the type of char
 });
 test("generates a password with a length that unevenly divides by the type of characters", () => {
   const password = generatePassword({
-    uppercase: true,
-    lowercase: true,
-    numbers: true,
-    specialCharacters: true,
+    useUppercase: true,
+    useLowercase: true,
+    useNumbers: true,
+    useSpecialCharacters: true,
     length: 9,
   });
   expect(password.length).toEqual(9);

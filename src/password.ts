@@ -91,16 +91,16 @@ export function generatePassword(input: GeneratorInput): string {
    */
   let retArr = Array(input.length).fill(-1);
   let numTypes = 0;
-  if (input.lowercase) {
+  if (input.useLowercase) {
     numTypes += 1;
   }
-  if (input.numbers) {
+  if (input.useNumbers) {
     numTypes += 1;
   }
-  if (input.specialCharacters) {
+  if (input.useSpecialCharacters) {
     numTypes += 1;
   }
-  if (input.uppercase) {
+  if (input.useUppercase) {
     numTypes += 1;
   }
   // This is the number of chars for each type (e.g. lower case, upper case etc.).
@@ -109,7 +109,7 @@ export function generatePassword(input: GeneratorInput): string {
   const numCharsPerType = Math.floor(input.length / numTypes);
   const remainder = input.length % numTypes;
   // For each type, randomly choose appropriate number
-  if (input.lowercase) {
+  if (input.useLowercase) {
     for (let i = 0; i < numCharsPerType; i++) {
       let randIndx = getRandomNum(input.length);
       // As long as there is a value at this index, try a new index.
@@ -119,7 +119,7 @@ export function generatePassword(input: GeneratorInput): string {
       retArr[randIndx] = LOWERCASE_LETTERS[randIndx];
     }
   }
-  if (input.uppercase) {
+  if (input.useUppercase) {
     for (let i = 0; i < numCharsPerType; i++) {
       let randIndx = getRandomNum(input.length);
 
@@ -130,7 +130,7 @@ export function generatePassword(input: GeneratorInput): string {
         UPPERCASE_LETTERS[getRandomNum(UPPERCASE_LETTERS.length)];
     }
   }
-  if (input.numbers) {
+  if (input.useNumbers) {
     for (let i = 0; i < numCharsPerType; i++) {
       let randIndx = getRandomNum(input.length - 1);
 
@@ -140,7 +140,7 @@ export function generatePassword(input: GeneratorInput): string {
       retArr[randIndx] = NUMBERS[getRandomNum(NUMBERS.length)];
     }
   }
-  if (input.specialCharacters) {
+  if (input.useSpecialCharacters) {
     for (let i = 0; i < numCharsPerType; i++) {
       let randIndx = getRandomNum(input.length);
 

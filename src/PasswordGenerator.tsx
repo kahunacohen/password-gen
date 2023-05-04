@@ -17,10 +17,10 @@ export function PasswordGenerator() {
         </div>
         <Output
           length={passwordLength}
-          uppercase={true}
-          lowercase={true}
-          numbers={true}
-          specialCharacters={true}
+          useUppercase={true}
+          useLowercase={true}
+          useNumbers={true}
+          useSpecialCharacters={true}
         />
         <Input setPasswordLength={setPasswordLength} length={passwordLength} />
       </div>
