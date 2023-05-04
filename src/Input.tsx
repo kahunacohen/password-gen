@@ -1,4 +1,11 @@
-export function Input(props: { length: number; setPasswordLength: Function }) {
+export function Input(props: {
+  length: number;
+  setPasswordLength: Function;
+  setUseLowercase: Function;
+  setUseUppercase: Function;
+  setUseNumbers: Function;
+  setUseSpecialCharacters: Function;
+}) {
   function handleInputTicks(evt: any) {
     switch (evt.target.dataset.passParams) {
       case "uppercase":

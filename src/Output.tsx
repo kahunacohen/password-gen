@@ -2,14 +2,7 @@ import React, { useEffect, useState } from "react";
 import { generatePassword, getPasswordStrength } from "./password";
 import { PasswordParameters } from "./types";
 
-export function Output(
-  props: PasswordParameters & {
-    setUseLowercase: Function;
-    setUseUppercase: Function;
-    setUseNumbers: Function;
-    setUseSpecialCharacters: Function;
-  }
-) {
+export function Output(props: PasswordParameters) {
   const [password, setPassword] = useState("");
 
   useEffect(() => {
