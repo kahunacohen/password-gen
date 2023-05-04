@@ -7,14 +7,19 @@ export function Input(props: {
   setUseSpecialCharacters: Function;
 }) {
   function handleInputTicks(evt: any) {
-    switch (evt.target.dataset.passParams) {
+    const newVal = evt.target.checked;
+    switch (evt.target.dataset.passParam) {
       case "uppercase":
+        props.setUseUppercase(newVal);
         break;
       case "lowercase":
+        props.setUseLowercase(newVal);
         break;
       case "numbers":
+        props.setUseNumbers(newVal);
         break;
       case "specialchars":
+        props.setUseSpecialCharacters(newVal);
         break;
       default:
         console.error("an invalid password input parameter was chosen");
@@ -44,7 +49,7 @@ export function Input(props: {
         <div className="checkbox-ct">
           <label>Lowercase</label>
           <input
-            data-pass-param="lowercae"
+            data-pass-param="lowercase"
             defaultChecked={true}
             type="checkbox"
           ></input>

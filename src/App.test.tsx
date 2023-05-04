@@ -71,3 +71,7 @@ test("generates a password with a length that unevenly divides by the type of ch
   expect(numNumbers).toBe(2);
   expect(numSpecialChars).toBe(3);
 });
+test("generates a password with a length that unevenly divides by the type of characters when special characters is false", () => {
+  // Need to implement this.
+  expect(1).toBe(2);
+});

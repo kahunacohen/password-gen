@@ -152,7 +152,8 @@ export function generatePassword(input: PasswordParameters): string {
     }
   }
   // If there's a remainder (the length doesn't divide evenly by type of chars, then replace
-  // any remaining -1 elements with special characters.
+  // any remaining -1 elements with special characters. Dynamically handle which type to take from
+  // in case special characters is not chosen.
   if (remainder > 0) {
     retArr = retArr.map((x) =>
       x === -1 ? SPECIAL_CHARACTERS[getRandomNum(SPECIAL_CHARACTERS.length)] : x
