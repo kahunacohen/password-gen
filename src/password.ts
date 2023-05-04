@@ -1,4 +1,3 @@
-import { specialChars } from "@testing-library/user-event";
 import { PasswordParameters } from "./types";
 
 export const LOWERCASE_LETTERS = [
