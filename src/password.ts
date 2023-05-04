@@ -1,5 +1,5 @@
 import { specialChars } from "@testing-library/user-event";
-import { GeneratorInput } from "./types";
+import { PasswordParameters } from "./types";
 
 export const LOWERCASE_LETTERS = [
   "a",
@@ -82,7 +82,7 @@ export const SPECIAL_CHARACTERS = [
 function getRandomNum(max: number): number {
   return Math.floor(Math.random() * max);
 }
-export function generatePassword(input: GeneratorInput): string {
+export function generatePassword(input: PasswordParameters): string {
   /**
    * Determine number of each type of character by dividing
    * the length by number of types. So if we choose a password of

@@ -1,4 +1,4 @@
-export interface GeneratorInput {
+export interface PasswordParameters {
   length: number;
   useUppercase: boolean;
   useLowercase: boolean;
