@@ -28,19 +28,35 @@ export function Input(props: { length: number; setPasswordLength: Function }) {
       <div className="checkboxes-ct" onChange={handleInputTicks}>
         <div className="checkbox-ct">
           <label>Uppercase</label>
-          <input data-pass-param="uppercase" type="checkbox"></input>
+          <input
+            data-pass-param="uppercase"
+            defaultChecked={true}
+            type="checkbox"
+          ></input>
         </div>
         <div className="checkbox-ct">
           <label>Lowercase</label>
-          <input data-pass-param="lowercae" type="checkbox"></input>
+          <input
+            data-pass-param="lowercae"
+            defaultChecked={true}
+            type="checkbox"
+          ></input>
         </div>
         <div className="checkbox-ct">
           <label>Numbers</label>
-          <input data-pass-param="numbers" type="checkbox"></input>
+          <input
+            data-pass-param="numbers"
+            defaultChecked={true}
+            type="checkbox"
+          ></input>
         </div>
         <div className="checkbox-ct">
           <label>Special Characters</label>
-          <input data-pass-param="specialchars" type="checkbox"></input>
+          <input
+            data-pass-param="specialchars"
+            defaultChecked={true}
+            type="checkbox"
+          ></input>
         </div>
       </div>
     </div>
